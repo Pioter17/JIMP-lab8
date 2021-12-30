@@ -1,5 +1,4 @@
 #include "alex.h"
-
 #include <ctype.h>
 
 static int  ln= 0;
@@ -56,6 +55,7 @@ lexem_t alex_nextLexem( void ) {
 	}       
   	return EOFILE;
 }
+
 char *  alex_ident( void ) {
    	return ident;
 }
