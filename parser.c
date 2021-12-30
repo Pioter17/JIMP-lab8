@@ -5,8 +5,7 @@
 
 #define MAXINDENTLENGHT 256     // maks długość identyfikatora
 
-void
-analizatorSkladni (char *inpname)
+void analizatorSkladni (char *inpname)
 {                               // przetwarza plik inpname
 
   FILE *in = fopen (inpname, "r");
