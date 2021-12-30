@@ -25,7 +25,7 @@ lexem_t alex_nextLexem( void ) {
                         return OPEBRA;
     		else if( c == '}' )
                         return CLOBRA;
-    		else if( isalpha( c ) ) {
+    		else if( isalpha(c) ) {
       			int i= 1;
       			ident[0] = c;
       			while( isalnum( c= fgetc(ci) ) )
@@ -39,14 +39,14 @@ lexem_t alex_nextLexem( void ) {
       			*/
       			int cp = c;
       			while( (c= fgetc(ci)) != EOF && c != '"' && cp == '\\' ) {
-                	cp = c;
+                		cp = c;
       			}
       			return c==EOF ? EOFILE : OTHER; 
     		}
 		else if( c == '/' ) {
       			/* moze byc komentarz */
     		}
-		if( isdigit( c ) || c == '.' ) {
+		if( isdigit(c) || c == '.' ) {
       			/* liczba */
     		}
 		else {
@@ -56,7 +56,7 @@ lexem_t alex_nextLexem( void ) {
   	return EOFILE;
 }
 
-char *  alex_ident( void ) {
+char * alex_ident( void ) {
    	return ident;
 }
 
