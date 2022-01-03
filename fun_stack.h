@@ -4,6 +4,9 @@
 typedef struct {
 	int par_level;
 	char * funame;
+	int defnrs, defnrk;
+	int protonr;
+	int *usenr;
 } fun_info_t;
 
 int top_of_funstack( void );  // zwraca par_level - "zagłębienie nawiasowe" przechowywane na szczycie
