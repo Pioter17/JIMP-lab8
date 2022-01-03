@@ -13,11 +13,15 @@ bool isKeyword(char * name) {
 	case "float":
 	case "bool":
 	case "char":
-		return true;
+	case "while":
+	case "for":
+	case "if":
+	case "void":
+		return false;
 	break;
 
 	default:
-		return false;
+		return true;
 	break;
 	}	
 }
@@ -76,7 +80,6 @@ lexem_t alex_nextLexem( void ) {
 }
 
 char * alex_ident( void ) {
-	alex_nextLexem();
    	return ident;
 }
 
