@@ -42,8 +42,8 @@ int top_of_funstack(void){
 
 char *get_from_fun_stack(void){
 	
-	// Dodanie do funlist
-	funlist[funlist_i] = 
-
+	char *name = funstack[funstack_i].funame;
+	funstack_i -= 1;
+	return name;
 }
 
