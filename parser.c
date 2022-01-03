@@ -68,7 +68,7 @@ void analizatorSkladni(char *inpname)
         		fprintf(stderr, "\nBUUUUUUUUUUUUUUUUUUUUUU!\n"
                  		"W pliku %s (linia %d) są błędy składni.\n"
                  		"Kończę!\n\n", inpname, alex_getNL());
-       			 exit(1);               // to nie jest najlepsze, ale jest proste ;-)
+       			exit(1);               // to nie jest najlepsze, ale jest proste ;-)
       		}
       		break;
 
