@@ -45,13 +45,13 @@ void analizatorSkladni(char *inpname)
         		if (top_of_funstack() == npar) {       // sprawdzamy, czy liczba nawiasów bilansuje się z wierzchołkiem stosu funkcji
                                                 			// jeśli tak, to właśnie wczytany nawias jest domknięciem nawiasu otwartego
                                                 			// za identyfikatorem znajdującym się na wierzchołku stosu
-          			lexem_t nlex = alex_nextLexem ();     	// bierzemy nast leksem
+          			lexem_t nlex = alex_nextLexem();     	// bierzemy nast leksem
           			if (nlex == OPEBRA)   // nast. leksem to klamra a więc mamy do czynienia z def. funkcji
-            				store_add_def (get_from_fun_stack(), alex_getLN(), inpname);
+            				store_add_def(get_from_fun_stack(), alex_getLN(), inpname);
           			else if (nbra == 0)   // nast. leksem to nie { i jesteśmy poza blokami - to musi być prototyp
-            				store_add_proto (get_from_fun_stack(), alex_getLN(), inpname);
+            				store_add_proto(get_from_fun_stack(), alex_getLN(), inpname);
           			else                  // nast. leksem to nie { i jesteśmy wewnątrz bloku - to zapewne wywołanie
-            				store_add_call (get_from_fun_stack(), alex_getLN(), inpname);
+            				store_add_call(get_from_fun_stack(), alex_getLN(), inpname);
         		}
        	 		npar--;
       		}
@@ -65,11 +65,11 @@ void analizatorSkladni(char *inpname)
       			nbra--;
       		break;
 
-    		case ERROR:{
-        		fprintf (stderr, "\nBUUUUUUUUUUUUUUUUUUUUUU!\n"
+    		case ERROR: {
+        		fprintf(stderr, "\nBUUUUUUUUUUUUUUUUUUUUUU!\n"
                  		"W pliku %s (linia %d) są błędy składni.\n"
                  		"Kończę!\n\n", inpname, alex_getNL());
-       			 exit (1);               // to nie jest najlepsze, ale jest proste ;-)
+       			 exit(1);               // to nie jest najlepsze, ale jest proste ;-)
       		}
       		break;
 

@@ -1,13 +1,13 @@
 #include "alex.h"
 #include <ctype.h>
 
-static int  ln= 0;
+static int  ln = 0;
 static char ident[256];
-static FILE *ci= NULL;
+static FILE *ci = NULL;
 
 void alex_init4file( FILE *in ) {
-   ln= 0;
-   ci= in;
+   ln = 0;
+   ci = in;
 }
 
 lexem_t alex_nextLexem( void ) {
@@ -26,11 +26,11 @@ lexem_t alex_nextLexem( void ) {
     		else if( c == '}' )
                         return CLOBRA;
     		else if( isalpha(c) ) {
-      			int i= 1;
+      			int i = 1;
       			ident[0] = c;
       			while( isalnum( c= fgetc(ci) ) )
-	      		ident[i++] = c;
-              		ident[i] = '\0';
+	      			ident[i++] = c;
+              			ident[i] = '\0';
       			return isKeyword(ident) ? OTHER : IDENT;
     		}
 		else if( c == '"' ) {
@@ -41,7 +41,7 @@ lexem_t alex_nextLexem( void ) {
       			while( (c= fgetc(ci)) != EOF && c != '"' && cp == '\\' ) {
                 		cp = c;
       			}
-      			return c==EOF ? EOFILE : OTHER; 
+      			return c == EOF ? EOFILE : OTHER; 
     		}
 		else if( c == '/' ) {
       			/* moze byc komentarz */
