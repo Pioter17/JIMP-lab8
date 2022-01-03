@@ -34,6 +34,7 @@ lexem_t alex_nextLexem( void ) {
                         continue;
     		else if( c == '\n' )
                         ln++;
+			continue;
     		else if( c == '(' )
                         return OPEPAR;
     		else if( c == ')' )
@@ -63,11 +64,12 @@ lexem_t alex_nextLexem( void ) {
 		else if( c == '/' ) {
       			/* moze byc komentarz */
     		}
+
 		if( isdigit(c) || c == '.' ) {
       			/* liczba */
     		}
 		else {
-      		return OTHER;
+      			return OTHER;
     		}
 	}       
   	return EOFILE;
