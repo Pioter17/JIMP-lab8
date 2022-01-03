@@ -14,10 +14,11 @@ bool isKeyword(char * name) {
 	case "bool":
 	case "char":
 		return true;
-		break;
+	break;
+
 	default:
 		return false;
-		break;
+	break;
 	}	
 }
 
