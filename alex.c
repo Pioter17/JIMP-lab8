@@ -5,6 +5,22 @@ static int  ln = 0;
 static char ident[256];
 static FILE *ci = NULL;
 
+bool isKeyword(char * name) {
+	switch name {
+	
+	case "int":
+	case "dobule":
+	case "float":
+	case "bool":
+	case "char":
+		return true;
+		break;
+	default:
+		return false;
+		break;
+	}	
+}
+
 void alex_init4file( FILE *in ) {
    ln = 0;
    ci = in;
