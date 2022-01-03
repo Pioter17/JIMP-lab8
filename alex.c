@@ -75,22 +75,8 @@ lexem_t alex_nextLexem( void ) {
   	return EOFILE;
 }
 
-char * alex_ident( void ) {	
-	int i, j = 0;
-	char *nazwa = malloc(256 * sizeof(*nazwa));
-	bool start = false;
-	while((i = fgetc(ci)) != EOF) {
-		if(isspace(i) || c== '\n') {
-			if (start)
-				break;
-			continue;
-		}
-		else {
-			start = true;
-			nazwa[j] = i;
-			j++;
-		}
-	}
+char * alex_ident( void ) {
+	alex_nextLexem();
    	return ident;
 }
 
