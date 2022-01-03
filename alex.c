@@ -30,7 +30,7 @@ lexem_t alex_nextLexem( void ) {
       			ident[0] = c;
       			while( isalnum( c= fgetc(ci) ) )
 	      			ident[i++] = c;
-              			ident[i] = '\0';
+              		ident[i] = '\0';
       			return isKeyword(ident) ? OTHER : IDENT;
     		}
 		else if( c == '"' ) {

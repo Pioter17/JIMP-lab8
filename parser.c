@@ -21,7 +21,7 @@ void analizatorSkladni(char *inpname)
   	while (lex != EOFILE) {
     		switch (lex) {
 
-    		case IDENT:{
+    		case IDENT: {
         		char *iname = alex_ident();   // zapamiętaj identyfikator i patrz co dalej
         		lexem_t nlex = alex_nextLexem();
         		if (nlex == OPEPAR) {   // nawias otwierający - to zapewne funkcja
