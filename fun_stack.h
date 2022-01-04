@@ -20,6 +20,10 @@ typedef struct {
 int top_of_funstack( void );  // zwraca par_level - "zagłębienie nawiasowe" przechowywane na szczycie
 void put_on_fun_stack( int par_level, char *funame ); // odkłada na stos parę (funame,par_level)
 char *get_from_fun_stack( void ); // usuwa z wierzchołka parę (funame,par_level), zwraca zdjętą funame
+void store_add_def(char *, int, char *);
+void store_add_proto(char *, int, char *);
+void store_add_call(char *, int, char *);
+
 
 
 #endif
