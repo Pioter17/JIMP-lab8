@@ -7,8 +7,8 @@ fun_info_stack_t funstack[100];
 fun_info_t **funlist;
 static int funstack_i = 0;
 static int funlist_i = 0;
-static int funlist_max_size = 100;
-const int funlist_size_part = 100; // o ile zwiekszac pamiec przy realloc
+static int funlist_max_size = 2;
+const int funlist_size_part = 2; // o ile zwiekszac pamiec przy realloc
 
 
 int get_funlist_i(void) {
@@ -20,7 +20,7 @@ int get_funstack_i(void) {
 
 
 void init_fun_stack( void ) {
-	funlist = malloc(100 * sizeof(**funlist));
+	funlist = malloc(2 * sizeof(**funlist));
 }
 
 
