@@ -1,13 +1,21 @@
 #ifndef _FUN_STACK_H_IS_INCLUDED_
 #define _FUN_STACK_H_IS_INCLUDED_
 
+#define FUNAME_SIZE 256  // rozmiar tablicy funame przechowujaca nazwe funkcji
+#define USENR_SIZE 100   // podstawowy rozmiar tablicy int usenr która przechowuje linie w jakich została użyta funkcja 
+
 typedef struct {
-	int par_level;
-	char * funame;
+	char funame[256];
 	int defnrs, defnrk;
 	int protonr;
 	int *usenr;
+	int usenr_i;
 } fun_info_t;
+
+typedef struct {
+	int par_level;
+	char funame[256];
+} fun_info_stack_t;
 
 int top_of_funstack( void );  // zwraca par_level - "zagłębienie nawiasowe" przechowywane na szczycie
 void put_on_fun_stack( int par_level, char *funame ); // odkłada na stos parę (funame,par_level)

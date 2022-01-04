@@ -6,14 +6,14 @@ fun_info_t *funlist = malloc(100 * sizeof(*funlist));
 static int funstack_i = 0;
 static int funlist_i = 0;
 static int funlist_max_size = 100;
-static int funlist_size_part = 100; // o ile zwiekszac pamiec przy realloc
+const int funlist_size_part = 100; // o ile zwiekszac pamiec przy realloc
 
 void put_on_fun_stack(int par_level, char *funame){
 	
-	fun_info_t new;
-	new.usenr = malloc(100 * sizeof(*new.usenr));
+	fun_info_stack_t new;
 	new.par_level = par_level;
-	
+	new.funame = funame;
+		
 	funstack[funstack_i] = new;
 	funstack_i++;
 	
@@ -22,15 +22,26 @@ void put_on_fun_stack(int par_level, char *funame){
 			break;
 		}
 	}
+      
 
 	if(i == funlist_i) {
-		funlist[funlist_i] = new;
+
+		fun_info_t new2;
+		new2.funame = funame;
+		new2.usenr = malloc(100 * sizeof (*usenr));
+		new2.usenr_i = 0;
+		new2.protonr = -1;
+		new2.defnrs = -1;
+		new2.defnrk = -1;
+
+		funlist[funlist_i] = new2;
 		funlist_i++;
 		
 		// jezeli przy dodaniu nastepnego elementu nie bylo by miejsca
 		// zwieksz potrzebna przestrzen juz teraz
 		if (funlist_i == funlist_max_size) {
-			funlist = realloc(funlist, (funlist_max_size + funlist_size_part)*sizeof(*funlist));	
+			funlist_max_size += funlist_size_part;
+			funlist = realloc(funlist, funlist_max_size*sizeof(*funlist));	
 		}
 	}
 }
