@@ -47,3 +47,34 @@ char *get_from_fun_stack(void){
 	return name;
 }
 
+
+void store_add_def(char *funame, int ln , char *inpname){
+	
+	for (int i = 0; i < funlist_i; i++){
+		if (funlist[i].funame == funame){
+			funlist[i].defnrs = ln;
+			break;
+		}
+	}
+}
+
+void store_add_proto(char *funame, int ln, char *inpname){
+
+	for (int i = 0; i < funlist_i; i++){
+		if (funlist[i].funame == funame){
+			funlist[i].protonr = ln;
+			break;
+		}
+	}
+}
+
+void store_add_call(char *funame, int ln, char *inpname){
+
+	for (int i = 0; i < funlist_i; i++){
+		if (funlist[i].funame == funame){
+			funlist[i].usenr[funlist[i].usenr_i] = ln;
+			funlist[i].usenr_i++;
+		}
+	}
+}
+
