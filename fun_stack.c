@@ -85,6 +85,7 @@ void store_add_call(char *funame, int ln, char *inpname){
 		if (funlist[i].funame == funame){
 			funlist[i].usenr[funlist[i].usenr_i] = ln;
 			funlist[i].usenr_i++;
+			break;
 		}
 	}
 }
