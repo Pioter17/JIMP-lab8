@@ -5,11 +5,14 @@ int main(int argc, char **argv) {
 	
 	char *funame[256];
 
-	put_on_funstack(0, "fa");
-	put_on_funstack(1, "fb");	
-	printf("fun on top: %s\n", get_from_funstack());
-	printf("fun on top: %s\n", get_from_funstack());
-	put_on_funstack(0, "fc");
+	init_fun_stack();
+
+	put_on_fun_stack(0, "fa");
+	put_on_fun_stack(1, "fb");	
+	printf("funstack_i: %d\nfunlist_i: %d\n", get_funstack_i(), get_funlist_i());
+	printf("fun on top: %s\n", get_from_fun_stack());
+	printf("fun on top: %s\n", get_from_fun_stack());
+	put_on_fun_stack(0, "fc");
 	printf("par level on top: %d\n", top_of_funstack());	
-	printf("fun on top: %s\n", get_from_funstack());
+	printf("fun on top: %s\n", get_from_fun_stack());
 }

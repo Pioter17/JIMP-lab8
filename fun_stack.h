@@ -24,7 +24,10 @@ void store_add_def(char *, int, char *);
 void store_add_proto(char *, int, char *);
 void store_add_call(char *, int, char *);
 
+void init_fun_stack(void);
 
+int get_funstack_i(void);
+int get_funlist_i(void);
 
 #endif
 
