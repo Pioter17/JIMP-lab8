@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 		}
 		else
 		{
-			printf("\t\tLinia %s\n", funlista[i]->protonr);
+			printf("\t\tLinia %d\n", funlista[i]->protonr);
 		}
 		printf("\tDefinicja:");
 		if(funlista[i]->defnrs == -1)
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 		}
 		else
 		{
-			printf("\t\tLinie od %s do %s\n", funlista[i]->defnrs, funlista[i]->defnrs);
+			printf("\t\tLinie od %d do %d\n", funlista[i]->defnrs, funlista[i]->defnrs);
 		}
 		printf("\tUzycie");
 		if(funlista[i]->usenr_i==0)
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 		else
 		{
 			printf("\t\tFunkcja jest uzyta w liniach:");
-			for (int j = 0; j < usenr_i; j++)
+			for (int j = 0; j < funlista[i]->usenr_i; j++)
 			{
 				printf(" %d", funlista[i]->usenr[j]);
 			}
@@ -52,3 +52,4 @@ int main(int argc, char **argv)
 	}
 
 	return 0;
+}
