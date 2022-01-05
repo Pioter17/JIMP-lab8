@@ -1,29 +1,31 @@
 #include "alex.h"
 #include <ctype.h>
+#include <string.h>
 
 static int  ln = 0;
 static char ident[256];
 static FILE *ci = NULL;
 
-bool isKeyword(char * name) {
-	switch name {
-	
-	case "int":
-	case "dobule":
-	case "float":
-	case "bool":
-	case "char":
-	case "while":
-	case "for":
-	case "if":
-	case "void":
-		return false;
-	break;
-
-	default:
-		return true;
-	break;
-	}	
+int isKeyword(char * name) {
+	if (strcmp(name, "int")==0)
+		return 0;
+	if (strcmp(name, "double")==0)
+		return 0;
+	if (strcmp(name, "float")==0)
+		return 0;
+	if (strcmp(name, "char")==0)
+		return 0;
+	if (strcmp(name, "while")==0)
+		return 0;
+	if (strcmp(name, "for")==0)
+		return 0;
+	if (strcmp(name, "if")==0)
+		return 0;
+	if (strcmp(name, "void")==0)
+		return 0;
+	if (strcmp(name, "switch")==0)
+		return 0;	
+	return 1;
 }
 
 void alex_init4file( FILE *in ) {
@@ -36,9 +38,10 @@ lexem_t alex_nextLexem( void ) {
 	while( (c= fgetc(ci)) != EOF ) {
  		if( isspace( c ) )
                         continue;
-    		else if( c == '\n' )
-                        ln++;
+    		else if( c == '\n' ){
+			ln++;
 			continue;
+		}
     		else if( c == '(' )
                         return OPEPAR;
     		else if( c == ')' )

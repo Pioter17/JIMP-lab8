@@ -7,7 +7,7 @@
 
 void analizatorSkladni(char *inpname)
 {                               // przetwarza plik inpname
-
+	
 	FILE *in = fopen(inpname, "r");
 
  	int nbra = 0;   // bilans nawiasów klamrowych {}
@@ -67,7 +67,7 @@ void analizatorSkladni(char *inpname)
     		case ERROR: {
         		fprintf(stderr, "\nBUUUUUUUUUUUUUUUUUUUUUU!\n"
                  		"W pliku %s (linia %d) są błędy składni.\n"
-                 		"Kończę!\n\n", inpname, alex_getNL());
+                 		"Kończę!\n\n", inpname, alex_getLN());
        			exit(1);               // to nie jest najlepsze, ale jest proste ;-)
       		}
       		break;
@@ -76,6 +76,6 @@ void analizatorSkladni(char *inpname)
       		break;
     		}
 
-		lex = alex_nextLexem();
-  	}
+		lex = alex_nextLexem()
+		}
 }
