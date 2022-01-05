@@ -108,7 +108,7 @@ void store_add_call(char *funame, int ln, char *inpname){
 			funlist[i]->usenr[funlist[i]->usenr_i] = ln;
 			funlist[i]->usenr_i++;
 			if (funlist[i]->usenr_i == funlist[i]->usenr_max) {
-				usenr_max += USENR_SIZE;
+				funlist[i]->usenr_max += USENR_SIZE;
 				realloc_usenr(funlist[i]);
 			}	
 			break;
