@@ -1,29 +1,13 @@
 #include "alex.h"
 #include <ctype.h>
+#include <string.h>
 
 static int  ln = 0;
 static char ident[256];
 static FILE *ci = NULL;
 
-bool isKeyword(char * name) {
-	switch name {
-	
-	case "int":
-	case "dobule":
-	case "float":
-	case "bool":
-	case "char":
-	case "while":
-	case "for":
-	case "if":
-	case "void":
-		return false;
-	break;
+int isKeyword(char * name) {
 
-	default:
-		return true;
-	break;
-	}	
 }
 
 void alex_init4file( FILE *in ) {
