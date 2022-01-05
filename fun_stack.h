@@ -30,6 +30,7 @@ void init_fun_stack(void);
 int get_funstack_i(void);
 int get_funlist_i(void);
 fun_info_t **get_funlist(void);
+void realloc_usenr(fun_info_t*);
 
 #endif
 
