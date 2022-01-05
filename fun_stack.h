@@ -10,6 +10,7 @@ typedef struct {
 	int protonr;
 	int *usenr;
 	int usenr_i;
+	int usenr_max;
 } fun_info_t;
 
 typedef struct {

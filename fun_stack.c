@@ -51,6 +51,7 @@ void put_on_fun_stack(int par_level, char *funame){
 		strcpy(new2.funame, funame);
 		new2.usenr = malloc(100 * sizeof (*new2.usenr));
 		new2.usenr_i = 0;
+		new2.usenr_max = USENR_SIZE;
 		new2.protonr = -1;
 		new2.defnrs = -1;
 		new2.defnrk = -1;
@@ -106,8 +107,22 @@ void store_add_call(char *funame, int ln, char *inpname){
 		if (funlist[i]->funame == funame){
 			funlist[i]->usenr[funlist[i]->usenr_i] = ln;
 			funlist[i]->usenr_i++;
+			if (funlist[i]->usenr_i == funlist[i]->usenr_max) {
+				funlist[i]->usenr_max += USENR_SIZE;
+				realloc_usenr(funlist[i]);
+			}	
 			break;
 		}
 	}
 }
 
+void free_funlist(void) {
+	for( int i = 0; i < funlist_i; i++ ) {
+		free(funlist[i]->usenr);
+	}
+	free(funlist);
+}
+
+void realloc_usenr(fun_info_t *fun_info) {
+	fun_info->usenr = realloc(fun_info->usenr, fun_info->usenr_max * sizeof(*(fun_info->usenr)));
+}

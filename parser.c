@@ -77,5 +77,5 @@ void analizatorSkladni(char *inpname)
     		}
 
 		lex = alex_nextLexem();
-		}
+	}
 }
