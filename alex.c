@@ -72,7 +72,7 @@ lexem_t alex_nextLexem( void ) {
       			/* moze byc komentarz */
     		}
 
-		if( isdigit(c) || c == '.' ) {
+		else if( isdigit(c) || c == '.' ) {
       			/* liczba */
     		}
 		else {
