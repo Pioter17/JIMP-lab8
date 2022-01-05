@@ -18,6 +18,10 @@ int get_funstack_i(void) {
 	return funstack_i;
 }
 
+fun_info_t **get_funlist(void) {
+	return funlist; 
+}
+
 
 void init_fun_stack( void ) {
 	funlist = malloc(100 * sizeof(**funlist));
