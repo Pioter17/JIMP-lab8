@@ -64,7 +64,6 @@ lexem_t alex_nextLexem( void ) {
               		ident[i] = '\0';
 			
 			// zwroc znak spowrotem do strumienia
-			printf("TEST: c: %c\n", c);
 			ungetc(c, ci);
 
       			return isKeyword(ident) ? OTHER : IDENT;

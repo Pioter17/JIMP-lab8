@@ -66,8 +66,12 @@ void put_on_fun_stack(int par_level, char *funame){
 		new2.defnrs = -1;
 		new2.defnrk = -1;
 
+		printf("TEST: po utworzeniu new2, przed dolozeniem new2 na funlist\n");
+
 		funlist[funlist_i] = &new2;
 		funlist_i++;
+
+		printf("TEST: po dolozeniu new2 na funlist\n");
 		
 		// jezeli przy dodaniu nastepnego elementu nie bylo by miejsca
 		// zwieksz potrzebna przestrzen juz teraz

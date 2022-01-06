@@ -11,7 +11,8 @@ int main(int argc, char **argv)
 		fprintf(stderr, "%s: błąd: Proszę podać plik do odczytu\n", argv[0]);
 	}
 	
-	printf("TEST: \n");
+	init_fun_stack();	
+
 	analizatorSkladni(argv[1]);
 	printf("TEST: funlist_i: %d\n", get_funlist_i());
 
@@ -20,7 +21,7 @@ int main(int argc, char **argv)
 	for (int i = 0; i < get_funlist_i(); i++)
 	{
 		printf("Funkcja %s:\n", funlista[i]->funame);
-		printf("\tPrototyp:");
+		printf("\tPrototyp:\n");
 		if(funlista[i]->protonr == -1)
 		{
 			printf("\t\tPrototypu nie ma w podanym pliku\n");
@@ -29,7 +30,7 @@ int main(int argc, char **argv)
 		{
 			printf("\t\tLinia %d\n", funlista[i]->protonr);
 		}
-		printf("\tDefinicja:");
+		printf("\tDefinicja:\n");
 		if(funlista[i]->defnrs == -1)
 		{
 			printf("\t\tDefinicji nie ma w podanym pliku\n");
@@ -38,7 +39,7 @@ int main(int argc, char **argv)
 		{
 			printf("\t\tLinie od %d do %d\n", funlista[i]->defnrs, funlista[i]->defnrs);
 		}
-		printf("\tUzycie");
+		printf("\tUzycie\n");
 		if(funlista[i]->usenr_i==0)
 		{
 			printf("\t\tFunkcja nie jest uzyta w podanym pliku\n");
@@ -50,6 +51,7 @@ int main(int argc, char **argv)
 			{
 				printf(" %d", funlista[i]->usenr[j]);
 			}
+			printf("\n");
 		}
 	}
 
