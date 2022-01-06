@@ -8,24 +8,24 @@ static FILE *ci = NULL;
 
 int isKeyword(char * name) {
 	if (strcmp(name, "int")==0)
-		return 0;
+		return 1;
 	if (strcmp(name, "double")==0)
-		return 0;
+		return 1;
 	if (strcmp(name, "float")==0)
-		return 0;
+		return 1;
 	if (strcmp(name, "char")==0)
-		return 0;
+		return 1;
 	if (strcmp(name, "while")==0)
-		return 0;
+		return 1;
 	if (strcmp(name, "for")==0)
-		return 0;
+		return 1;
 	if (strcmp(name, "if")==0)
-		return 0;
+		return 1;
 	if (strcmp(name, "void")==0)
-		return 0;
+		return 1;
 	if (strcmp(name, "switch")==0)
-		return 0;	
-	return 1;
+		return 1;
+	return 0;	
 }
 
 void alex_init4file( FILE *in ) {

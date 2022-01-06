@@ -10,8 +10,10 @@ int main(int argc, char **argv)
 	{
 		fprintf(stderr, "%s: błąd: Proszę podać plik do odczytu\n", argv[0]);
 	}
-
+	
+	printf("TEST: \n");
 	analizatorSkladni(argv[1]);
+	printf("TEST: funlist_i: %d\n", get_funlist_i());
 
 	fun_info_t **funlista = get_funlist();
 

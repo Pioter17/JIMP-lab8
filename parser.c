@@ -23,11 +23,13 @@ void analizatorSkladni(char *inpname)
 
     		case IDENT: {
         		char *iname = alex_ident();   // zapamiętaj identyfikator i patrz co dalej
+			printf("TEST: iname: %s\n", iname);
         		lexem_t nlex = alex_nextLexem();
         		if (nlex == OPEPAR) {   // nawias otwierający - to zapewne funkcja
          			npar++;
          			put_on_fun_stack(npar, iname);     // stos f. jest niezbędny, aby poprawnie obsłużyć sytuacje typu
-                                                // f1( 5, f2( a ), f3( b ) )
+                                printf("TEST: Uzycie put_on_funstack; funlist_i: %d\n", get_funlist_i());        
+					// f1( 5, f2( a ), f3( b ) )
        	 		}
         		else {                  // nie nawias, czyli nie funkcja
           			lex = nlex;
