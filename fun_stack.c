@@ -47,7 +47,8 @@ void put_on_fun_stack(int par_level, char *funame){
 	
 	int i = 0;	
 	for(i = 0; i < funlist_i; i++) {
-		if(funlist[i]->funame == funame) {
+		//if(funlist[i]->funame == funame) {
+		if(strcmp(funlist[i]->funame,funame)==9){
 			break;
 			printf("TEST: znaleziono funkcje w funlist\n");
 		}
@@ -98,8 +99,10 @@ char *get_from_fun_stack(void){
 void store_add_def(char *funame, int ln , char *inpname){
 	
 	for (int i = 0; i < funlist_i; i++){
-		if (funlist[i]->funame == funame){
+		//if (funlist[i]->funame == funame){
+		if (strcmp(funlist[i]->funame, funame)==0){
 			funlist[i]->defnrs = ln;
+			printf("TEST: LN DEF: %d\n",ln);
 			break;
 		}
 	}
@@ -108,8 +111,10 @@ void store_add_def(char *funame, int ln , char *inpname){
 void store_add_proto(char *funame, int ln, char *inpname){
 
 	for (int i = 0; i < funlist_i; i++){
-		if (funlist[i]->funame == funame){
+		//if (funlist[i]->funame == funame){
+		if(strcmp(funlist[i]->funame,funame)==0){
 			funlist[i]->protonr = ln;
+			printf("TEST: LN PROTO: %d\n",ln);
 			break;
 		}
 	}
@@ -118,7 +123,8 @@ void store_add_proto(char *funame, int ln, char *inpname){
 void store_add_call(char *funame, int ln, char *inpname){
 
 	for (int i = 0; i < funlist_i; i++){
-		if (funlist[i]->funame == funame){
+		//if (funlist[i]->funame == funame){
+		if(strcmp(funlist[i]->funame,funame)==0){
 			funlist[i]->usenr[funlist[i]->usenr_i] = ln;
 			funlist[i]->usenr_i++;
 			if (funlist[i]->usenr_i == funlist[i]->usenr_max) {
