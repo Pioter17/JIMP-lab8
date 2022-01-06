@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+// DO TESTOW !!!
+#include <stdio.h>
+
 
 fun_info_stack_t funstack[100];
 fun_info_t **funlist;
@@ -30,22 +33,29 @@ void init_fun_stack( void ) {
 
 void put_on_fun_stack(int par_level, char *funame){
 	
+	printf("\nTEST: Wewnatrz put_on_fun_stack(): \n");
+	printf("TEST: par_level %d, funame %s\n", par_level, funame);
+
 	fun_info_stack_t new;
 	new.par_level = par_level;
 	strcpy(new.funame, funame);
 		
 	funstack[funstack_i] = new;
 	funstack_i++;
+
+	printf("TEST: po dolozeniu new na funstack\n");
 	
 	int i = 0;	
 	for(i = 0; i < funlist_i; i++) {
 		if(funlist[i]->funame == funame) {
 			break;
+			printf("TEST: znaleziono funkcje w funlist\n");
 		}
 	}
-      
 
 	if(i == funlist_i) {
+		
+		printf("TEST: tuz przed tworzeniem new2\n");
 
 		fun_info_t new2;
 		strcpy(new2.funame, funame);

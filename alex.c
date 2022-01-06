@@ -25,6 +25,12 @@ int isKeyword(char * name) {
 		return 1;
 	if (strcmp(name, "switch")==0)
 		return 1;
+	if (strcmp(name, "ifndef")==0)
+		return 1;
+	if (strcmp(name, "define")==0)
+		return 1;
+	if (strcmp(name, "endif")==0)
+		return 1;
 	return 0;	
 }
 
@@ -50,31 +56,59 @@ lexem_t alex_nextLexem( void ) {
                         return OPEBRA;
     		else if( c == '}' )
                         return CLOBRA;
-    		else if( isalpha(c) ) {
+    		else if( isalpha(c) || c == '_' ) {
       			int i = 1;
       			ident[0] = c;
-      			while( isalnum( c= fgetc(ci) ) )
+      			while( isalnum( c= fgetc(ci) ) || c == '_')
 	      			ident[i++] = c;
               		ident[i] = '\0';
+			
+			// zwroc znak spowrotem do strumienia
+			printf("TEST: c: %c\n", c);
+			ungetc(c, ci);
+
       			return isKeyword(ident) ? OTHER : IDENT;
     		}
+
 		else if( c == '"' ) {
-      			/* Uwaga: tu trzeba jeszcze poprawic obsluge nowej linii w trakcie napisu
-         		i \\ w napisie 
-      			*/
-      			int cp = c;
-      			while( (c= fgetc(ci)) != EOF && c != '"' && cp == '\\' ) {
-                		cp = c;
-      			}
+			c = fgetc(ci);
+      			while( c != EOF && c != '"' )
+                		c = fgetc(ci);
       			return c == EOF ? EOFILE : OTHER; 
     		}
+
 		else if( c == '/' ) {
-      			/* moze byc komentarz */
+      			c = fgetc(ci);
+			if( c == '/' ) {
+				c = fgetc(ci);
+				while( c != '\n' )
+					c = fgetc(ci);
+			}
+			else if( c == '*' ) {
+				c = fgetc(ci);
+				while( 1 ) {
+					if( c == '*' ) {
+						c = fgetc(ci);
+						if( c == '/' )
+						       break;	
+					}
+					c = fgetc(ci);
+				}
+
+			}
+
+			while( ! isspace(c) )
+				c = fgetc(ci);
+			return OTHER;
     		}
 
 		else if( isdigit(c) || c == '.' ) {
-      			/* liczba */
+      			c = fgetc(ci);
+			while( ! isspace(c) )
+				c = fgetc(ci);
+			return OTHER;
     		}
+
 		else {
       			return OTHER;
     		}
