@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 
 	for (int i = 0; i < get_funlist_i(); i++)
 	{
-		printf("Funkcja %s:\n", funlista[i]->funame);
+		printf("%d. Funkcja %s:\n", i, funlista[i]->funame);
 		printf("\tPrototyp:\n");
 		if(funlista[i]->protonr == -1)
 		{
@@ -53,6 +53,7 @@ int main(int argc, char **argv)
 			}
 			printf("\n");
 		}
+		printf("\n");
 	}
 
 	free_funlist();
