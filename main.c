@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 
 	for (int i = 0; i < get_funlist_i(); i++)
 	{
-		printf("%d. Funkcja %s:\n", i, funlista[i]->funame);
+		printf("\n%d. Funkcja %s:\n", i+1, funlista[i]->funame);
 		printf("\tPrototyp:\n");
 		if(funlista[i]->protonr == -1)
 		{
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 		{
 			printf("\t\tLinie od %d do %d\n", funlista[i]->defnrs, funlista[i]->defnrs);
 		}
-		printf("\tUzycie\n");
+		printf("\tUzycie:\n");
 		if(funlista[i]->usenr_i==0)
 		{
 			printf("\t\tFunkcja nie jest uzyta w podanym pliku\n");
@@ -53,7 +53,6 @@ int main(int argc, char **argv)
 			}
 			printf("\n");
 		}
-		printf("\n");
 	}
 
 	free_funlist();
