@@ -104,6 +104,9 @@ lexem_t alex_nextLexem( void ) {
 
 			while( ! isspace(c) )
 				c = fgetc(ci);
+				if( c == '\n' )
+					ln++;
+
 			return OTHER;
     		}
 
@@ -111,6 +114,8 @@ lexem_t alex_nextLexem( void ) {
       			c = fgetc(ci);
 			while( ! isspace(c) )
 				c = fgetc(ci);
+				if( c == '\n' )
+					ln++;
 			return OTHER;
     		}
 
