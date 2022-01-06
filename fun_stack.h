@@ -26,6 +26,7 @@ void store_add_proto(char *, int, char *);
 void store_add_call(char *, int, char *);
 
 void init_fun_stack(void);
+void free_funlist(void);
 
 int get_funstack_i(void);
 int get_funlist_i(void);
