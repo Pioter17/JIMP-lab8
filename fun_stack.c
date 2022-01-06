@@ -48,7 +48,7 @@ void put_on_fun_stack(int par_level, char *funame){
 	int i = 0;	
 	for(i = 0; i < funlist_i; i++) {
 		//if(funlist[i]->funame == funame) {
-		if(strcmp(funlist[i]->funame,funame)==9){
+		if(strcmp(funlist[i]->funame, funame)==0){
 			break;
 			printf("TEST: znaleziono funkcje w funlist\n");
 		}
@@ -73,12 +73,19 @@ void put_on_fun_stack(int par_level, char *funame){
 		funlist_i++;
 
 		printf("TEST: po dolozeniu new2 na funlist\n");
+		fun_info_t **l = get_funlist();
+		printf("TEST: new2 funame: %s\n", l[funlist_i-1]->funame);
 		
 		// jezeli przy dodaniu nastepnego elementu nie bylo by miejsca
 		// zwieksz potrzebna przestrzen juz teraz
 		if (funlist_i == funlist_max_size) {
 			funlist_max_size += funlist_size_part;
 			funlist = realloc(funlist, funlist_max_size*sizeof(*funlist));	
+		}
+
+		for(int i = 0; i < funlist_i; i++) {
+			printf("TEST: %d. funame: %s\n", i,  funlist[i]->funame);
+			printf("TEST: %d. protonr: %d\n", i,  funlist[i]->protonr);
 		}
 	}
 }
@@ -99,7 +106,6 @@ char *get_from_fun_stack(void){
 void store_add_def(char *funame, int ln , char *inpname){
 	
 	for (int i = 0; i < funlist_i; i++){
-		//if (funlist[i]->funame == funame){
 		if (strcmp(funlist[i]->funame, funame)==0){
 			funlist[i]->defnrs = ln;
 			printf("TEST: LN DEF: %d\n",ln);
@@ -111,10 +117,11 @@ void store_add_def(char *funame, int ln , char *inpname){
 void store_add_proto(char *funame, int ln, char *inpname){
 
 	for (int i = 0; i < funlist_i; i++){
-		//if (funlist[i]->funame == funame){
+		printf("TEST: 11 funame: %s\n", funlist[i]->funame);
 		if(strcmp(funlist[i]->funame,funame)==0){
 			funlist[i]->protonr = ln;
 			printf("TEST: LN PROTO: %d\n",ln);
+			printf("TEST: 2222 funame: %s\n", funlist[i]->funame);
 			break;
 		}
 	}
@@ -123,7 +130,6 @@ void store_add_proto(char *funame, int ln, char *inpname){
 void store_add_call(char *funame, int ln, char *inpname){
 
 	for (int i = 0; i < funlist_i; i++){
-		//if (funlist[i]->funame == funame){
 		if(strcmp(funlist[i]->funame,funame)==0){
 			funlist[i]->usenr[funlist[i]->usenr_i] = ln;
 			funlist[i]->usenr_i++;

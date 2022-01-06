@@ -1,5 +1,5 @@
 a.out: alex.o parser.o fun_stack.o main.o
-	$(CC) $^
+		$(CC) $^
 
 
 alex.o: alex.c
