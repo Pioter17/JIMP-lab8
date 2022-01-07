@@ -4,6 +4,30 @@
 #define FUNAME_SIZE 256  // rozmiar tablicy funame przechowujaca nazwe funkcji
 #define USENR_SIZE 100   // podstawowy rozmiar tablicy int usenr która przechowuje linie w jakich została użyta funkcja 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 typedef struct {
 	char funame[256];
 	int defnrs, defnrk;

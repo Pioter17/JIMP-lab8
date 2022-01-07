@@ -5,7 +5,7 @@
 
 int main(int argc, char **argv)
 {
-
+	
 	if (argc < 2)
 	{
 		fprintf(stderr, "%s: błąd: Proszę podać plik do odczytu\n", argv[0]);

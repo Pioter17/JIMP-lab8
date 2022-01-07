@@ -44,11 +44,13 @@ lexem_t alex_nextLexem( void ) {
 	while( (c= fgetc(ci)) != EOF ) {
  		if( isspace( c ) )
                         continue;
-    		else if( c == '\n' ){
+		printf("TEST 0: przed is /n?|| c == %c\n", c);
+    		if( c == 10 ){
+			printf("TEST 1: sprawdzenie '/n'\n");
 			ln++;
 			continue;
 		}
-    		else if( c == '(' )
+    		if( c == '(' )
                         return OPEPAR;
     		else if( c == ')' )
       			return CLOPAR;
@@ -68,6 +70,10 @@ lexem_t alex_nextLexem( void ) {
 
       			return isKeyword(ident) ? OTHER : IDENT;
     		}
+		else if(c == ';'){
+			ln++;
+			continue;
+		}
 
 		else if( c == '"' ) {
 			c = fgetc(ci);
