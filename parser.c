@@ -26,10 +26,8 @@ void analizatorSkladni(char *inpname)
         		lexem_t nlex = alex_nextLexem();
         		if (nlex == OPEPAR) {   // nawias otwierający - to zapewne funkcja
          			npar++;
-				printf("TEST: tuz przed uzyciem put_on_funstack\n");
          			put_on_fun_stack(npar, iname);     // stos f. jest niezbędny, aby poprawnie obsłużyć sytuacje typu
-                                printf("TEST: Uzycie put_on_funstack; funlist_i: %d\n\n", get_funlist_i());        
-					// f1( 5, f2( a ), f3( b ) )
+								// f1( 5, f2( a ), f3( b ) )
        	 		}
         		else {                  // nie nawias, czyli nie funkcja
           			lex = nlex;
