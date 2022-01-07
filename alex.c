@@ -71,10 +71,11 @@ lexem_t alex_nextLexem( void ) {
 
 		else if( c == '"' ) {
 			c = fgetc(ci);
-      			while( c != EOF && c != '"' )
+      			while( c != EOF && c != '"' ) {
                 		c = fgetc(ci);
 				if( c == '\n' )
 					ln++;
+			}
       			return c == EOF ? EOFILE : OTHER; 
     		}
 
@@ -95,27 +96,34 @@ lexem_t alex_nextLexem( void ) {
 						       break;
 						else if( c == '\n' )
 							ln++;
-					else if( c == '\n' )
+					}
+					else if( c == '\n' ) {
 						ln++;	
 					}
 					c = fgetc(ci);
 				}
 			}
 
-			while( ! isspace(c) )
+			while( ! isspace(c) ) {
 				c = fgetc(ci);
-				if( c == '\n' )
+				if( c == '\n' ) {
 					ln++;
+					return ERROR;
+				}
+				else if( ! (isdigit(c) || c == '.' ) )
+					return ERROR;
+ 			}
 
 			return OTHER;
     		}
 
 		else if( isdigit(c) || c == '.' ) {
       			c = fgetc(ci);
-			while( ! isspace(c) )
+			while( ! isspace(c) ) {
 				c = fgetc(ci);
 				if( c == '\n' )
 					ln++;
+			}
 			return OTHER;
     		}
 
