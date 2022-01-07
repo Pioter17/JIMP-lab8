@@ -101,11 +101,9 @@ void store_add_def(char *funame, int ln , char *inpname){
 void store_add_proto(char *funame, int ln, char *inpname){
 
 	for (int i = 0; i < funlist_i; i++){
-		printf("TEST: 11 funame: %s\n", funlist[i].funame);
 		if(strcmp(funlist[i].funame,funame)==0){
 			funlist[i].protonr = ln;
 			printf("TEST: LN PROTO: %d\n",ln);
-			printf("TEST: 2222 funame: %s\n", funlist[i].funame);
 			break;
 		}
 	}
