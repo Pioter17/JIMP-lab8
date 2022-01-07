@@ -16,43 +16,43 @@ int main(int argc, char **argv)
 	analizatorSkladni(argv[1]);
 	printf("TEST: funlist_i: %d\n", get_funlist_i());
 
-	fun_info_t **funlista = get_funlist();
+	fun_info_t *funlista = get_funlist();
 
 	for (int i = 0; i < get_funlist_i(); i++)
 	{
-		printf("\n%d. Funkcja %s:\n", i+1, funlista[i]->funame);
+		printf("\n%d. Funkcja %s:\n", i+1, funlista[i].funame);
 		printf("\tPrototyp:\n");
 
-		if(funlista[i]->protonr == -1)
+		if(funlista[i].protonr == -1)
 		{
 			printf("\t\tPrototypu nie ma w podanym pliku\n");
 		}
 		else
 		{
-			printf("\t\tLinia %d\n", funlista[i]->protonr);
+			printf("\t\tLinia %d\n", funlista[i].protonr);
 		}
 
 		printf("\tDefinicja:\n");
-		if(funlista[i]->defnrs == -1)
+		if(funlista[i].defnrs == -1)
 		{
 			printf("\t\tDefinicji nie ma w podanym pliku\n");
 		}
 		else
 		{
-			printf("\t\tLinie od %d do %d\n", funlista[i]->defnrs, funlista[i]->defnrs);
+			printf("\t\tLinie od %d do %d\n", funlista[i].defnrs, funlista[i].defnrs);
 		}
 
 		printf("\tUzycie:\n");
-		if(funlista[i]->usenr_i==0)
+		if(funlista[i].usenr_i==0)
 		{
 			printf("\t\tFunkcja nie jest uzyta w podanym pliku\n");
 		}
 		else
 		{
 			printf("\t\tFunkcja jest uzyta w liniach:");
-			for (int j = 0; j < funlista[i]->usenr_i; j++)
+			for (int j = 0; j < funlista[i].usenr_i; j++)
 			{
-				printf(" %d", funlista[i]->usenr[j]);
+				printf(" %d", funlista[i].usenr[j]);
 			}
 			printf("\n");
 		}
