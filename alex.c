@@ -44,10 +44,11 @@ lexem_t alex_nextLexem( void ) {
 	while( (c= fgetc(ci)) != EOF ) {	
 		printf("TEST 0: przed is \\n?|| ");
 		if( c == '\n' ) {
-			printf("!NL\n");
+			printf("!NL");
 		} else {
-			printf("%c\n", c);
+			printf("%c  ", c);
 		}
+		printf(" ln: %d\n", ln);
 
 		if( c == '\n' ) {
 			printf("TEST: Inkrementacja ln\n");
@@ -82,9 +83,10 @@ lexem_t alex_nextLexem( void ) {
 			c = fgetc(ci);
       			while( c != EOF && c != '"' ) {
                 		c = fgetc(ci);
-				if( c == '\n' )
+				if( c == '\n' ) {
 					printf("TEST: Inkrementacja ln\n");
 					ln++;
+				}
 			}
       			return c == EOF ? EOFILE : OTHER; 
     		}
@@ -118,17 +120,6 @@ lexem_t alex_nextLexem( void ) {
 					c = fgetc(ci);
 				}
 			}
-
-			while( ! isspace(c) ) {
-				c = fgetc(ci);
-				if( c == '\n' ) {
-					printf("TEST: Inkrementacja ln\n");
-					ln++;
-					return ERROR;
-				}
-				else if( ! (isdigit(c) || c == '.' ) )
-					return ERROR;
- 			}
 
 			return OTHER;
     		}

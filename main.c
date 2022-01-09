@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 		}
 		else
 		{
-			printf("\t\tLinie od %d do %d\n", funlista[i].defnrs, funlista[i].defnrs);
+			printf("\t\tLinie od %d\n", funlista[i].defnrs);
 		}
 
 		printf("\tUzycie:\n");
