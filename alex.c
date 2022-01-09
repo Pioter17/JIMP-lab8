@@ -35,22 +35,29 @@ int isKeyword(char * name) {
 }
 
 void alex_init4file( FILE *in ) {
-   ln = 0;
+   ln = 1;
    ci = in;
 }
 
 lexem_t alex_nextLexem( void ) {
 	int c;
-	while( (c= fgetc(ci)) != EOF ) {
- 		if( isspace( c ) )
-                        continue;
-		printf("TEST 0: przed is /n?|| c == %c\n", c);
-    		if( c == 10 ){
-			printf("TEST 1: sprawdzenie '/n'\n");
+	while( (c= fgetc(ci)) != EOF ) {	
+		printf("TEST 0: przed is \\n?|| ");
+		if( c == '\n' ) {
+			printf("!NL\n");
+		} else {
+			printf("%c\n", c);
+		}
+
+		if( c == '\n' ) {
+			printf("TEST: Inkrementacja ln\n");
 			ln++;
 			continue;
 		}
-    		if( c == '(' )
+		else if( isspace( c )) {
+			continue;
+		}
+		else if( c == '(' )
                         return OPEPAR;
     		else if( c == ')' )
       			return CLOPAR;
@@ -70,16 +77,13 @@ lexem_t alex_nextLexem( void ) {
 
       			return isKeyword(ident) ? OTHER : IDENT;
     		}
-		else if(c == ';'){
-			ln++;
-			continue;
-		}
 
 		else if( c == '"' ) {
 			c = fgetc(ci);
       			while( c != EOF && c != '"' ) {
                 		c = fgetc(ci);
 				if( c == '\n' )
+					printf("TEST: Inkrementacja ln\n");
 					ln++;
 			}
       			return c == EOF ? EOFILE : OTHER; 
@@ -91,6 +95,7 @@ lexem_t alex_nextLexem( void ) {
 				c = fgetc(ci);
 				while( c != '\n' )
 					c = fgetc(ci);
+				printf("TEST: Inkrementacja ln\n");
 				ln++;
 			}
 			else if( c == '*' ) {
@@ -98,12 +103,16 @@ lexem_t alex_nextLexem( void ) {
 				while( 1 ) {
 					if( c == '*' ) {
 						c = fgetc(ci);
-						if( c == '/' )
+						if( c == '/' ) {
 						       break;
-						else if( c == '\n' )
+						}
+						else if( c == '\n' ) {
+							printf("TEST: Inkrementacja ln\n");
 							ln++;
+						}
 					}
 					else if( c == '\n' ) {
+						printf("TEST: Inkrementacja ln\n");
 						ln++;	
 					}
 					c = fgetc(ci);
@@ -113,6 +122,7 @@ lexem_t alex_nextLexem( void ) {
 			while( ! isspace(c) ) {
 				c = fgetc(ci);
 				if( c == '\n' ) {
+					printf("TEST: Inkrementacja ln\n");
 					ln++;
 					return ERROR;
 				}
@@ -127,8 +137,10 @@ lexem_t alex_nextLexem( void ) {
       			c = fgetc(ci);
 			while( ! isspace(c) ) {
 				c = fgetc(ci);
-				if( c == '\n' )
+				if( c == '\n' ) {
+					printf("TEST: Inkrementacja ln\n");
 					ln++;
+				}
 			}
 			return OTHER;
     		}
