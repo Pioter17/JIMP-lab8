@@ -92,7 +92,7 @@ void store_add_def(char *funame, int ln , char *inpname){
 	for (int i = 0; i < funlist_i; i++){
 		if (strcmp(funlist[i].funame, funame)==0){
 			funlist[i].defnrs = ln;
-			printf("TEST: LN DEF: %d\n",ln);
+			printf("TEST: WTKRYTO DEFINICJE\n");
 			break;
 		}
 	}
@@ -103,7 +103,7 @@ void store_add_proto(char *funame, int ln, char *inpname){
 	for (int i = 0; i < funlist_i; i++){
 		if(strcmp(funlist[i].funame,funame)==0){
 			funlist[i].protonr = ln;
-			printf("TEST: LN PROTO: %d\n",ln);
+			printf("TEST: WTKRYTO PROTOTYP\n");
 			break;
 		}
 	}
@@ -115,6 +115,7 @@ void store_add_call(char *funame, int ln, char *inpname){
 		if(strcmp(funlist[i].funame,funame)==0){
 			funlist[i].usenr[funlist[i].usenr_i] = ln;
 			funlist[i].usenr_i++;
+			printf("TEST: WTKRYTO UZYCIE\n");
 			if (funlist[i].usenr_i == funlist[i].usenr_max) {
 				funlist[i].usenr_max += USENR_SIZE;
 				realloc_usenr(funlist[i]);
