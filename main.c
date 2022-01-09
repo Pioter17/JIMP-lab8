@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 		}
 		else
 		{
-			printf("\t\tLinie od %d\n", funlista[i].defnrs);
+			printf("\t\tDefinicja rozpoczyna się w linii %d\n", funlista[i].defnrs);
 		}
 
 		printf("\tUzycie:\n");
